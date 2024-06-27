@@ -10,7 +10,7 @@ app.use('/wishlist',require('./routes/wishlistroutes'))
 app.use('/cart',require('./routes/cartroutes'))
 
 app.get("/", (req,res)=>{
-   res.status(200).send("Server started");
+   res.status(200).send({name:"Big commerce", status:"Server started"});
 });
 
 app.listen(port,(error)=>{
