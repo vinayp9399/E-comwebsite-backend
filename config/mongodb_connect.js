@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
-mongoose.connect("mongodb://127.0.0.1:27017/newkart",{});
+mongoose.connect("mongodb://0.0.0.0:27017/newkart",{});
 const usersSchema = {
     firstname:String,
     lastname:String,
     email:String,
     phoneno:String,
-    password:String,
-}
+    password:String
+};
+
 const productSchema = {
     productname:String,
     description:String,
@@ -41,4 +42,4 @@ const products = mongoose.model("Product",productSchema);
 const wishlist = mongoose.model("wishlist",wishlistSchema);
 const cart = mongoose.model("cart",cartSchema);
 module.exports = {products, users, wishlist, cart};
-//module.exports = users;
+// module.exports = users;

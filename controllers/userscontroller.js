@@ -31,6 +31,7 @@ exports.singleuserlist = async (request, response) =>{
 
 exports.registration = async (request, response) =>{
     let userData = request.body
+    console.log(userData)
     // db.query('insert into users set ?',[userData],(error,result)=>{
     //     if(error){
     //         response.send(JSON.stringify({'error':error.message, 'message':result}))
@@ -44,7 +45,7 @@ exports.registration = async (request, response) =>{
 
     const user = await users(userData)
     user.save();
-    response.send(JSON.stringify({'error':'','message':'Registration succesfull'}));
+    response.send(JSON.stringify({'error':'','message':userData}));
     
     
 }
