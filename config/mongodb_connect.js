@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect("mongodb://127.0.0.1:27017/newkart?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.0.2",{useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});
+mongoose.connect("mongodb://localhost:27017/newkart?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.0.2",{useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});
 const usersSchema = {
     firstname:String,
     lastname:String,
