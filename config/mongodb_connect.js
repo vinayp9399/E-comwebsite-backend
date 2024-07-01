@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect("mongodb://0.0.0.0:27017/newkart",{}).then(() => {
+mongoose.connect("mongodb://0.0.0.0:27017/newkart",{useNewUrlParser: true, useUnifiedTopology: true}).then(() => {
     console.log("Connected to Database");
     }).catch((err) => {
         console.log("Not Connected to Database ERROR! ", err);
