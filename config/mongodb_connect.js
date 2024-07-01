@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect("mongodb://0.0.0.0:27017/newkart",{useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});
+mongoose.connect("mongodb://127.0.0.1:27017/newkart",{useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});
 const usersSchema = {
     firstname:String,
     lastname:String,
