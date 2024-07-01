@@ -1,18 +1,18 @@
-//const db = require('../config/db');
+const db = require('../config/db');
 const mongo = require('../config/mongodb_connect');
 const users = mongo.users;
 //const users = require('../config/mongodb_connect');
 exports.userlist = async(request, response) =>{
-    // db.query('select * from users',[],(error,result)=>{
-    //     if(error){
-    //         response.send(JSON.stringify({'error':error.message, 'message':result}))
-    //     }
-    //     else{
-    //         response.send(JSON.stringify({'error':'', 'message':result}))
-    //     }
-    // })
-    let result = await users.find();
-    response.send(JSON.stringify({'error':'', 'message':result}))
+    db.query('select * from users',[],(error,result)=>{
+        if(error){
+            response.send(JSON.stringify({'error':error.message, 'message':result}))
+        }
+        else{
+            response.send(JSON.stringify({'error':'', 'message':result}))
+        }
+    })
+    // let result = await users.find();
+    // response.send(JSON.stringify({'error':'', 'message':result}))
 }
 
 exports.singleuserlist = async (request, response) =>{
