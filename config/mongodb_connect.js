@@ -6,7 +6,7 @@ const usersSchema = {
     email:String,
     phoneno:String,
     password:String
-};
+}
 
 const productSchema = {
     productname:String,
