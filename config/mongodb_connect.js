@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect("mongodb://localhost:27017/newkart",{});
+mongoose.connect("mongodb://localhost:27017/newkart?directConnection=true&server",{});
 const usersSchema = {
     firstname:String,
     lastname:String,
