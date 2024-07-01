@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect("mongodb://0.0.0.0:27017/newkart?directConnection=true&serverSelectionTimeoutMS=10000&appName=mongosh+2.0.2",{}).then(() => {
+mongoose.connect("mongodb://0.0.0.0:27017/newkart",{}).then(() => {
     console.log("Connected to Database");
     }).catch((err) => {
         console.log("Not Connected to Database ERROR! ", err);
