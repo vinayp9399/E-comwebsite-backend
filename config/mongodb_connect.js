@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
-mongoose.connect("mongodb://localhost:27017/newkart?directConnection=true&serverSelectionTimeoutMS=10000&appName=mongosh+2.0.2",{useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});
+mongoose.connect("mongodb://localhost:27017/newkart?directConnection=true&serverSelectionTimeoutMS=10000&appName=mongosh+2.0.2",{useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true}).then(() => {
+    console.log("Connected to Database");
+    }).catch((err) => {
+        console.log("Not Connected to Database ERROR! ", err);
+    });
 const usersSchema = {
     firstname:String,
     lastname:String,
