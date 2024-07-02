@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect("mongodb+srv://vinayp9399:mechanic%4093@vinaycluster.03uocxi.mongodb.net/?retryWrites=true&w=majority&appName=VinayCluster",{useNewUrlParser: true, useUnifiedTopology: true}).then(() => {
+mongoose.connect("mongodb+srv://vinayp9399:mechanic%4093@vinaycluster.03uocxi.mongodb.net/bigcart?retryWrites=true&w=majority&appName=VinayCluster",{useNewUrlParser: true, useUnifiedTopology: true}).then(() => {
     console.log("Connected to Database");
     }).catch((err) => {
         console.log("Not Connected to Database ERROR! ", err);
