@@ -53,10 +53,13 @@ exports.registration = async (request, response) =>{
 exports.login = async(request,response)=>{
    
     const Password = request.body.password;
-    let result = await users.findOne({email:request.body.email})
+    let result = await users.findOne({email:request.body.email});
     //console.log(hashPassword)
     //console.log(result.password);
-    if(Password != result.password){
+    if(!result){
+        response.send(JSON.stringify({'error':'','message':'email or password does not match'}))
+    }
+    else if(Password != result.password){
         response.send(JSON.stringify({'error':'','message':'email or password does not match'}))
     }else{
         response.send(JSON.stringify({'error':'','message':result}))
