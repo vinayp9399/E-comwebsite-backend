@@ -16,6 +16,6 @@ app.get("/", (req,res)=>{
    res.status(200).send({name:"Big commerce", status:"Server started"});
 });
 
-// app.listen(port,(error)=>{
-//     console.log(`server has started at ${port}`)
-// })
+app.listen(port,(error)=>{
+    console.log(`server has started at ${port}`)
+})
