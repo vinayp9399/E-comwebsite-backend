@@ -85,3 +85,8 @@ exports.findproducts = async(request, response) =>{
     response.send(JSON.stringify({'error':'','message':result}))
 }
 
+exports.searchproducts = async(request, response) =>{
+    const result = await products.find({productname:{$regex: request.params.input, $options: "i"}})
+    response.send(JSON.stringify({'error':'','message':result}))
+}
+
