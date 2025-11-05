@@ -42,15 +42,42 @@ exports.searchproducts = async(request, response) =>{
 }
 
 exports.sidesearchproducts = async(request, response) =>{
-    const {category, secondarycategory, brand, price} = request.query;
-    const result = await products.find({
-    category: category,
-    $or: [
-        { secondarycategory: {$regex: secondarycategory, $options: "i"} },
-        { brand: {$regex: brand, $options: "i"} },
-        { price: { $lt: price } },
-    ],
-    });
-    response.send(JSON.stringify({'error':'','message':result}))
-}
+    // const {category, secondarycategory, brand, price} = request.query;
+    // console.log(category, secondarycategory, brand, price);
+    // const result = await products.find({
+    // category: category,
+    // $and: [
+    //     { secondarycategory: {$regex: secondarycategory, $options: "i"} },
+    //     { brand: {$regex: brand, $options: "i"} },
+    //     { price: { $lt: Number(price) } },
+    // ],
+    // });
+    // response.send(JSON.stringify({'error':'','message':result}))
 
+    const { category, secondarycategory, brand, price } = request.query;
+    console.log(category, secondarycategory, brand, price);
+
+    // Build query dynamically
+    const query = {};
+
+    if (category && category !== "") {
+      query.category = category;
+    }
+
+    if (secondarycategory && secondarycategory !== "" && secondarycategory !== "none") {
+      query.secondarycategory = { $regex: secondarycategory, $options: "i" };
+    }
+
+    if (brand && brand !== "" && brand !== "none") {
+      query.brand = { $regex: brand, $options: "i" };
+    }
+
+    if (price && price !== "" && price !== "none") {
+      query.price = { $lt: Number(price) }; // filter prices less than the given value
+    }
+
+    // Fetch results
+    const result = await products.find(query);
+
+    response.json({ error: "", message: result });
+}
