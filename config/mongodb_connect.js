@@ -20,6 +20,8 @@ const productSchema = {
     rating:String,
     imageurl:String,
     category:String,
+    secondarycategory:String,
+    brand:String,
 }
 const wishlistSchema = {
     userid:String,
