@@ -3,6 +3,10 @@ const cors = require('cors');
 const app = express();
 const bodyParser = require('body-parser');
 const port = 8080;
+
+const dns = require('dns');
+dns.setServers(['8.8.8.8', '8.8.4.4']);
+
 app.use(cors());
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
