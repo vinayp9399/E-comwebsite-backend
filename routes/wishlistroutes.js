@@ -1,10 +1,12 @@
 const express = require('express');
 const wishlistcontroller = require('../controllers/wishlistcontroller');
 const router = express.Router();
-router.get('/wishlist/(:userid)',wishlistcontroller.wishlist);
-router.get('/singlewish/(:id)',wishlistcontroller.singlewish);
-router.get('/findwish/(:category)',wishlistcontroller.findwish);
-router.post('/addwish',wishlistcontroller.addwish);
-router.delete('/deletewish/(:id)',wishlistcontroller.deletewish);
-router.put('/updatewish/(:id)',wishlistcontroller.updatewish);
+const authVerify = require('../middleware/authVerify')
+
+router.get('/wishlist/(:userid)', authVerify, wishlistcontroller.wishlist);
+router.get('/singlewish/(:id)', authVerify, wishlistcontroller.singlewish);
+router.get('/findwish/(:category)', authVerify, wishlistcontroller.findwish);
+router.post('/addwish', authVerify, wishlistcontroller.addwish);
+router.delete('/deletewish/(:id)', authVerify, wishlistcontroller.deletewish);
+router.put('/updatewish/(:id)', authVerify, wishlistcontroller.updatewish);
 module.exports = router

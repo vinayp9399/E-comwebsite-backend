@@ -1,9 +1,16 @@
 const express = require('express');
 const userscontroller = require('../controllers/userscontroller');
 const router = express.Router();
-router.get('/userlist',userscontroller.userlist);
-router.get('/singleuserlist/(:id)',userscontroller.singleuserlist);
-router.post('/registration',userscontroller.registration);
-router.delete('/deleteuser/(:id)',userscontroller.deleteuser);
-router.post('/login',userscontroller.login);
+const authVerify = require('../middleware/authVerify')
+
+// Public routes (no token needed)
+router.post('/registration', userscontroller.registration);
+router.post('/login', userscontroller.login);
+router.post('/refresh', userscontroller.refreshtoken);
+
+// Protected routes
+router.get('/userlist', authVerify, userscontroller.userlist);
+router.get('/singleuserlist/(:id)', authVerify, userscontroller.singleuserlist);
+router.delete('/deleteuser/(:id)', authVerify, userscontroller.deleteuser);
+
 module.exports = router
